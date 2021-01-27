@@ -1,9 +1,16 @@
 import requests
 from pprint import pprint
 
-r = requests.get('https://api.exchangeratesapi.io/latest')
+def currency_RUB(a,b):
+    for i in range(a, b):
+        parameters = f'{i+1}-12-31?symbols=RUB'
+        url = f"https://api.exchangeratesapi.io/{parameters}"
+        r = requests.get(url)
 
-data = r.json()['rates']['USD']
-pprint(data)
-# for i in data:
-#     print(i['name'])
+        data = r.json()
+       
+    return data
+    
+p = currency_RUB(1998, 2021)
+
+pprint(p)
